@@ -12,6 +12,7 @@ export const EmployeeProvider = (props) => {
     }
 
     const addEmployee = (employeeObj) => {
+        debugger
         return fetch("http://localhost:8000/employees", {
             method: "POST",
             header: {

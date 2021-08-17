@@ -15,7 +15,7 @@ export const EmployeeProvider = (props) => {
         debugger
         return fetch("http://localhost:8000/employees", {
             method: "POST",
-            header: {
+            headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(employeeObj)

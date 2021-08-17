@@ -10,10 +10,13 @@ import { Route } from "react-router-dom"
 
 import { LocationProvider } from "./location/LocationProvider"
 import { LocationList } from "./location/LocationList"
+import { LocationDetail } from "./location/LocationDetail"
 
 import { AnimalProvider } from "./animal/AnimalProvider"
 import { AnimalList } from "./animal/AnimalList"
 import { AnimalForm } from "./animal/AnimalForm"
+import { AnimalDetail } from "./animal/AnimalDetail"
+import { AnimalSearch } from "./animal/AnimalSearch"
 
 import { CustomerProvider } from "./customer/CustomerProvider"
 import { CustomerList } from "./customer/CustomerList"
@@ -40,9 +43,17 @@ export const ApplicationViews = () => {
             </LocationProvider>
 
             <LocationProvider>
-                <Route path="/locations">
+                <Route exact path="/locations">
                     <LocationList />
                 </Route>
+
+                <EmployeeProvider>
+                    <AnimalProvider>
+                        <Route path="/locations/detail/:locationId(\d+)">
+                            <LocationDetail />
+                        </Route>
+                    </AnimalProvider>
+                </EmployeeProvider>
             </LocationProvider>
 
             {/* Render the animal list when http://localhost:3000/animals */}
@@ -51,8 +62,21 @@ export const ApplicationViews = () => {
                 {/* using exact above: 
                 when the form component below is rendered (path="/animals/create is rendered), 
                 the AnimalList component will disappear */}
+                    <AnimalSearch /> 
                     <AnimalList />
                 </Route>
+
+                <CustomerProvider>
+                    <LocationProvider>
+                        {/* 
+                        : is for dynamite path.
+                        (\d+) is a pattern match: 
+                            match at least one digit; only a digit will trigger this route */}
+                        <Route exact path="/animals/detail/:animalId(\d+)">
+                            <AnimalDetail />
+                        </Route>
+                    </LocationProvider>
+                </CustomerProvider>
 
                 <CustomerProvider>
                     <LocationProvider>
@@ -62,7 +86,16 @@ export const ApplicationViews = () => {
                     </LocationProvider>
                 </CustomerProvider>
 
+                <CustomerProvider>
+                    <LocationProvider>
+                        <Route path="/animals/edit/:animalId(\d+)">
+                            <AnimalForm />
+                        </Route>
+                    </LocationProvider>
+                </CustomerProvider>
+
             </AnimalProvider>
+
 
             <EmployeeProvider>
                 <Route path="/employees">

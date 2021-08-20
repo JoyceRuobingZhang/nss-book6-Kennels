@@ -28,7 +28,7 @@ return (
                             Employee Name：
                             {employee.name}
                         </div>
-                        <div className="employss_location">
+                        <div className="employees_location">
                             Employee Location: {employee.location.name}
                         </div>
                     </div>

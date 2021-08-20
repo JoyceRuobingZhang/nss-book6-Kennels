@@ -15,8 +15,8 @@ export const AnimalList = () => {
   const history = useHistory()
 
   //useEffect - reach out to the world for something(data)
-  /*    The useEffect() hook allows the component to reach out into the world for anything that cannot be handled 
-      during render.  In this case, it is the API call for the animals. 
+  /*    The useEffect() hook allows the component to reach out into the world for anything that cannot be handled during render.  
+      In this case, it is the API call for the animals. 
         only do the API call once when this component is rendered. (this component will be rendered many times, but we 
       don't want to do many API calls. 
   */
@@ -29,7 +29,7 @@ export const AnimalList = () => {
   useEffect(() => {
     if (searchTerms !== "") {
       // If the search field is not blank, display matching animals
-      const subset = animals.filter(animal => animal.name.toLowerCase().includes(searchTerms))
+      const subset = animals.filter(animal => animal.name.toLowerCase().includes(searchTerms.toLowerCase()))
       setFiltered(subset)
     } else {
       // If the search field is blank, display all animals

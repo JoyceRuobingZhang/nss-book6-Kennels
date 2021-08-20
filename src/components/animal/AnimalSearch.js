@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import { AnimalContext } from "./AnimalProvider"
 import "./Animal.css"
 
@@ -11,13 +11,15 @@ import "./Animal.css"
 export const AnimalSearch = () => {
   const { setSearchTerms } = useContext(AnimalContext)
 
+  useEffect(() => {setSearchTerms("")}, []) //❓❓❓❓❓如何解决： 键入搜索时，AnimalList page (/animals）无法刷新？
+
   return (
     <>
+    <div className="search">
       Animal search:
-      <input type="text"
-        className="input--wide"
-        onKeyUp={(event) => setSearchTerms(event.target.value)}
-        placeholder="Search for an animal... " />
+      <input type="text" className="input--wide" onKeyUp={(event) => setSearchTerms(event.target.value)} placeholder="Search for an animal... " />
+    </div>
     </>
   )
 }
+

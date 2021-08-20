@@ -6,7 +6,7 @@ import "./Animal.css"
 import { useHistory, useParams } from 'react-router-dom';
 
 export const AnimalForm = () => {
-    const { addAnimal, getAnimalById, updateAnimal } = useContext(AnimalContext)
+    const { addAnimal, getAnimalById, updateAnimal, getAnimals } = useContext(AnimalContext)
     const { locations, getLocations } = useContext(LocationContext)
     const { customers, getCustomers } = useContext(CustomerContext)
 
@@ -51,6 +51,8 @@ export const AnimalForm = () => {
               locationId: parseInt(animal.locationId),
               customerId: parseInt(animal.customerId)
           })
+          // .then(() => getAnimals().then(() => history.push(`/animals/detail/${animal.id}`)))
+          // ㊙️㊙️㊙️㊙️㊙️㊙️ 解决edit page 无法 update state 的问题！！！
           .then(() => history.push(`/animals/detail/${animal.id}`))
         } else {
           //POST - add

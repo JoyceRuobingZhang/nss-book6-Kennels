@@ -16,7 +16,7 @@ export const AnimalProvider = (props) => {
           }} 
     */
 
-    const [searchTerms, setSearchTerms] = useState([])
+    const [searchTerms, setSearchTerms] = useState("")
 
     const getAnimals = () => {
         return fetch("http://localhost:8000/animals?_expand=customer&_expand=location&_sort=location.id")
@@ -36,14 +36,14 @@ export const AnimalProvider = (props) => {
     }
 
     const releaseAnimal = animalId => {
-        return fetch(`http://localhost:8088/animals/${animalId}`, {
+        return fetch(`http://localhost:8000/animals/${animalId}`, {
             method: "DELETE"
         })
         .then(getAnimals)
     }     
     
     const updateAnimal = animal => {
-        return fetch(`http://localhost:8088/animals/${animal.id}`, {
+        return fetch(`http://localhost:8000/animals/${animal.id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json"

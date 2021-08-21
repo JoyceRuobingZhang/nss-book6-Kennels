@@ -7,7 +7,7 @@ export const CustomerProvider = (props) => {
     const [customers, setCustomers] = useState([])
 
     const getCustomers = () => {
-        return fetch("http://localhost:8000/customers")
+        return fetch("https://nss-kennel-api-joyce.herokuapp.com/customers")
         .then(res => res.json())
         .then(setCustomers)
     }

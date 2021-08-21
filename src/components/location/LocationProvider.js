@@ -6,7 +6,7 @@ export const LocationProvider = (props) => {
     const [locations, setLocations] = useState([])
 
     const getLocations = () => {
-        return fetch("http://localhost:8000/locations?_embed=employees&_embed=animals")
+        return fetch("https://nss-kennel-api-joyce.herokuapp.com/locations?_embed=employees&_embed=animals")
         .then(res => res.json())
         .then(setLocations)
     }

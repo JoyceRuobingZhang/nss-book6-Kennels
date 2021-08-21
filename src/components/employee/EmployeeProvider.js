@@ -6,7 +6,7 @@ export const EmployeeProvider = (props) => {
     const [employees, setEmployees] = useState([])
 
     const getEmployees = () => {
-        return fetch("http://localhost:8000/employees?_expand=location")
+        return fetch("https://nss-kennel-api-joyce.herokuapp.com/employees?_expand=location")
         .then(res => res.json())
         .then(setEmployees)
     }

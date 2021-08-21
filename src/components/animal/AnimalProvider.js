@@ -19,7 +19,7 @@ export const AnimalProvider = (props) => {
     const [searchTerms, setSearchTerms] = useState("")
 
     const getAnimals = () => {
-        return fetch("http://localhost:8000/animals?_expand=customer&_expand=location&_sort=location.id")
+        return fetch("https://nss-kennel-api-joyce.herokuapp.com/animals?_expand=customer&_expand=location&_sort=location.id")
         .then(res => res.json())
         .then(setAnimals)
     }
